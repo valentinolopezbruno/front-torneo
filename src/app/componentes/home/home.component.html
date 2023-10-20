@@ -1,0 +1,78 @@
+<app-navbar></app-navbar>
+
+
+<div class="relative">
+    <div class=" mt-5 absolute flex w-full">
+        <div class="max-w-3xl ml-20 ">
+            <h1 class="text-white font-bold text-5xl uppercase leading-normal">
+                <span class="text-yellow-400">Raspa y Gana!</span> , La mejor App para organizar tu torneo de Fútbol
+            </h1>
+            <button class="items-center flex flex-row mt-7 uppercase border-2 border-green-500 hover:bg-green-500 text-white font-bold py-3 px-6 rounded-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trophy mr-2" viewBox="0 0 16 16">
+                    <path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/>
+                  </svg>Crea tu torneo
+            </button>
+        </div>
+        <div class="w-fit absolute right-56">
+            <div class="relative">
+                <img src="https://civideportes.com.co/wp-content/uploads/2019/10/C%C3%B3mo-hacer-una-cancha-de-f%C3%BAtbol.jpg" alt="" class="rounded-t-2xl filter brightness-75 h-72">
+                <img src="../../../assets/img/podio.png" alt="" class="absolute h-44 top-2 left-32">
+                <h3 class="absolute inset-0 flex items-end mb-10 text-white font-semibold text-2xl text-center" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);">
+                    Participa en el Torneo que estas buscando!
+                </h3>
+            </div>
+            <app-searchbar></app-searchbar>
+        </div>
+    </div>
+    <div class="absolute flex flex-wrap gap-10 w-full justify-center " style="top: 600px;">
+        <div class="shadow-sm bg-white rounded-xl h-auto w-1/4 items-center " >
+            <div class="mx-auto px-6 py-7">
+                <div class="flex flex-row items-center ">
+                    <h3 class="text-3xl font-bold bg-gradient-to-r from-yellow-500 to-red-500 text-transparent bg-clip-text">
+                        Tu Perfil
+                    </h3>
+                    <img src="../../../assets/img/soccer-player.png" alt="" class="h-10 ml-5">
+                </div>
+                <p class="my-10 text-gray-700 font-semibold">Puedes acceder a tus datos como jugador, viendo tu equipo, tus partidos ganados y perdidos, posición, y demás.</p>
+                <button class="uppercase bg-blue-950 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline">
+                    Regístrate <!--Habria que hacer una vista condicional de que si ya esta registrado, que se muestre en el boton, Mi Perfil-->
+                </button>
+            </div>
+        </div>
+        <div class=" bg-white rounded-xl h-auto w-1/4 ">
+            <div class="mx-auto px-6 py-7">
+                <div class="flex flex-row items-center w-full ">
+                    <h3 class="text-3xl font-bold bg-gradient-to-r from-yellow-500 to-red-500 text-transparent bg-clip-text">
+                        Tu Equipo
+                    </h3>
+                    <img src="../../../assets/img/football.png" alt="" class="h-10 ml-5">
+                </div>
+                <p class="my-10 text-gray-700 font-semibold">Puedes acceder a tus datos como jugador, viendo tu equipo, tus partidos ganados y perdidos, puesto, y demás.</p>
+                <a href="/crear-equipo">
+                    <button class="uppercase bg-blue-950 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline">
+                        Crear Equipo <!--Habria que hacer una vista condicional de que si ya tiene equipo, que se muestre en el boton, Mi equipo-->
+                    </button>
+                </a>
+            </div>
+        </div>
+        <div class="shadow-sm bg-white rounded-xl h-auto w-1/4">
+            <div class="mx-auto px-6 py-7">
+                <div class="flex flex-row items-center w-full ">
+                    <h3 class="text-3xl font-bold bg-gradient-to-r from-yellow-500 to-red-500 text-transparent bg-clip-text">
+                        Partidos
+                    </h3>
+                    <img src="../../../assets/img/football-goal.png" alt="" class="h-10 ml-5">
+                </div>
+                <p class="my-10 text-gray-700  font-semibold">Puedes acceder a tus datos como jugador, viendo tu equipo, tus partidos ganados y perdidos, puesto, y demás.</p>
+                <a href="/calendario-partidos">
+                    <button class="uppercase bg-blue-950 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline">
+                        Calendario
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <img src="../../../assets/img/World Map (1).svg" alt="" class="w-full h-auto ">
+
+    <app-footer></app-footer>
+</div>

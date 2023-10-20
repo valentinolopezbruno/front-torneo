@@ -13,9 +13,9 @@
           <input  type="text" id="username" formControlName="username" autocomplete="Username" nfrequired class="block w-full rounded-md border-0 py-1.5 text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6">
         </div>
         <!-- ALERTS Usuario-->
-        <div *ngIf="username.invalid && (username.dirty || username.touched)" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-          <div *ngIf="username.errors?.['required']">
-            <span class=" font-bold block sm:inline"> El usuario es requerido.</span>
+        <div *ngIf="username.invalid && (username.dirty || username.touched)" class="mt-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+          <div *ngIf="username.errors?.['required']" >
+            <span class=" font-bold block sm:inline "> El usuario es requerido.</span>
           </div>
         </div>
       </div>
@@ -31,14 +31,16 @@
           <input type="password" id="password" formControlName="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-teal-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6">
         </div>
         <!-- ALERTS Password-->
-       <div *ngIf="password.invalid && (password.dirty || password.touched)" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+       <div *ngIf="password.invalid && (password.dirty || password.touched)" class="mt-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
         <div *ngIf="password.errors?.['required']">
           <span class=" font-bold block sm:inline">Contraseña requerida.</span>
         </div>
       </div>
       </div>
       <div>
-        <button type="submit" (click)="onSubmit()" class="flex w-full justify-center rounded-md bg-teal-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-al-900" >Sign in</button>
+        <a href="/home">
+          <button type="submit" (click)="onSubmit()" class="flex w-full justify-center rounded-md bg-teal-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-al-900" >Sign in</button>
+        </a>
       </div>
     </form>
 
