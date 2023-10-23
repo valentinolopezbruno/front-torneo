@@ -21,9 +21,35 @@
                     Participa en el Torneo que estas buscando!
                 </h3>
             </div>
-            <app-searchbar></app-searchbar>
+            
+         <!--    BUSCADOR DE TORNEOS -->
+         <select [(ngModel)]="torneoSeleccionado">
+            <option disabled value="">Buscar Torneo...</option>
+            <option *ngFor="let torneo of torneos; let i = index" [value]="i">{{ torneo.nombre }}</option>
+          </select>
+          <button (click)="cargarTorneo()" class="uppercase bg-blue-950 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:shadow-outline">
+            Buscar
+        </button>
+
+
         </div>
     </div>
+
+
+    <div *ngIf="verCategorias" class="fixed inset-0 flex items-center justify-center z-50">
+        <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded shadow-md">
+          <h2  class="text-xl font-semibold">Categorias del Torneo {{torneoSeleccionado.nombre}}</h2>
+          <p>Seleccioná una Categoria</p>
+          <ul>
+            <li *ngFor="let categoria of categorias">{{ categoria.nombre }}</li>
+          </ul>
+          <button (click)="modalCategorias()" class="mt-4 bg-blue-500 text-white rounded px-4 py-2">Cerrar</button>
+        </div>
+      </div>
+    <div *ngIf="verCategorias" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+
+
+
     <div class="absolute flex flex-wrap gap-10 w-full justify-center " style="top: 600px;">
         <div class="shadow-sm bg-white rounded-xl h-auto w-1/4 items-center " >
             <div class="mx-auto px-6 py-7">
