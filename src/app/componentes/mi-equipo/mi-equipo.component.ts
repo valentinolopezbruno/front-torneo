@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Jugador } from 'src/app/models/jugador';
 import { EquipoServiceService } from 'src/app/servicios/equipo-service/equipo-service.service';
+import { TorneoServiceService } from 'src/app/servicios/torneo-service/torneo-service.service';
 
 @Component({
   selector: 'app-mi-equipo',
@@ -9,11 +10,13 @@ import { EquipoServiceService } from 'src/app/servicios/equipo-service/equipo-se
 })
 export class MiEquipoComponent {
 
-  constructor(private equipoServiceService:EquipoServiceService){}
+  constructor(private equipoServiceService:EquipoServiceService,
+    private torneoServiceService:TorneoServiceService){}
   //Variable donde serán guardados los jugadores.
   equipos:any[] = [];
   equipoSeleccionado:any;
   idEquipo:any=1;
+  torneos:any = [];
 
   // Traigo los Jugadores.
   getJugadoresPorEquipo(){
@@ -38,7 +41,30 @@ export class MiEquipoComponent {
     }
   }
 
+  getTorneos(){
+    this.torneoServiceService.getTorneos().subscribe((data) => {
+      (this.torneos = data);
+      console.log(this.torneos)
+    });
+  }
+
+  // Calculo el torneo que esta jugando el equipo seleccionado.
+  calcularTorneo(){
+    if(this.equipoSeleccionado){
+      for(let i= 0; i < this.torneos.length; i++){
+        for(let j=0; j < this.torneos[i].categorias.length;j++){
+          if(this.equipoSeleccionado.idCategoria === this.torneos[i].categorias[j].id){
+            
+            var torneoJugado = this.torneos[i].nombre /* + this.torneos[i].categorias[j].nombre */
+            return torneoJugado
+          }
+        }
+      }
+    } 
+  }
+
   ngOnInit(){
     this.getJugadoresPorEquipo();
+    this.getTorneos();
   }
 }

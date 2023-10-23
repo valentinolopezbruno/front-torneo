@@ -13,34 +13,39 @@
                 </div>
             </div>
             <button class="right-0 mr-5 mt-16 border border-green-600 hover:bg-green-600 rounded-full text-white font-bold p-2 pl-4 pr-4 ">Administrar Equipo</button>
-            <button class="right-0 mr-5 mt-16 border border-red-600 hover:bg-red-600 rounded-full text-white font-bold p-2 pl-4 pr-4 ">Abandonar Equipo</button>
-        </div>
+<!--             <button class="right-0 mr-5 mt-16 border border-red-600 hover:bg-red-600 rounded-full text-white font-bold p-2 pl-4 pr-4 ">Abandonar Equipo</button>
+ -->        </div>
         <div class="mt-24 space-y-5 min-h-screen w-full"> 
             <h1 class=" text-center font-bold bg-gradient-to-r from-yellow-200 to-red-600 text-transparent bg-clip-text text-4xl pb-5">{{equipoSeleccionado.nombre}}</h1>
             <h1 class=" text-center font-bold text-3xl text-white mt-0">Informacion del Equipo</h1>
             <div class="ml-10 space-y-5 max-h-fit flex flex-row mt-0 ">
                 <div class="h-full  bg-green-600 rounded-md p-5 shadow-2xl w-1/2 mr-5">
                     <h3 class="font-bold  text-lg uppercase bg-gradient-to-r from-yellow-200 to-red-600 text-transparent bg-clip-text">Jugadores:</h3> <br>
-                    <p class="font-semibold text-white text-lg">Gabriel Sanchez</p>
-                    <p class="font-semibold text-white text-lg">Imanol Rosales</p>
-                    <p class="font-semibold text-white text-lg">Gonzalo Georgetti</p> <br>
+                    <div *ngIf="equipoSeleccionado.jugadores">
+                        <div *ngFor="let jugador of equipoSeleccionado.jugadores">  
+                            <p class="font-semibold text-white text-lg">{{jugador.nombre}}</p>
+                        </div>
+                     </div>
 
                     <h3 class="font-bold  text-lg uppercase bg-gradient-to-r from-yellow-200 to-red-600 text-transparent bg-clip-text">Localidad:</h3> <br>
-                    <p class="font-semibold text-white text-lg">Portafolio Seppey, Andino, Cordoba, Peru</p>
+                    <p class="font-semibold text-white text-lg">{{equipoSeleccionado.localidad}}</p>
                 </div>
                 <div class="h-full bg-green-600 rounded-md p-5 shadow-2xl w-1/2 mr-10" style="margin-top: 0px;">
                     <h3 class="font-bold  text-lg uppercase bg-gradient-to-r from-yellow-200 to-red-600 text-transparent bg-clip-text">Historial:</h3> <br>
-                    <p class="font-semibold text-white text-lg">Partidos Jugados: <span class="font-bold text-blue-600"> 1 </span></p>
-                    <p class="font-semibold text-white text-lg">Partidos Ganados: <span class="font-bold text-green-800"> 1 </span></p>
-                    <p class="font-semibold text-white text-lg">Partidos Perdidos: <span class="font-bold text-red-700"> 99 </span></p> <br>
-
+                    <p class="font-semibold text-white text-lg">Partidos Jugados: <span class="font-bold text-blue-600"> {{equipoSeleccionado.jugados}} </span></p>
+                    <p class="font-semibold text-white text-lg">Partidos Ganados: <span class="font-bold text-green-800">  {{equipoSeleccionado.ganados}} </span></p>
+                    <p class="font-semibold text-white text-lg">Partidos Perdidos: <span class="font-bold text-red-700">  {{equipoSeleccionado.perdidos}} </span></p> <br>
+                    <p class="font-semibold text-white text-lg">Partidos Empatados: <span class="font-bold text-blue-600"> {{equipoSeleccionado.empatados}} </span></p>
                     <h3 class="font-bold  text-lg uppercase bg-gradient-to-r from-yellow-200 to-red-600 text-transparent bg-clip-text">Jugando Torneo:</h3><br>
-                    <p class="font-semibold text-white text-lg">Ninguno/Torneo</p> <!--Si esta jugando un torneo, hacer un enlace al torneo que se esta jugando y ver posiciones-->
+                    
+                    <p class="font-semibold text-white text-lg">{{calcularTorneo()}}</p> <!--Si esta jugando un torneo, hacer un enlace al torneo que se esta jugando y ver posiciones-->
+                   
                 </div>
+
             </div>
             <div class="h-full  bg-green-600 rounded-md p-5 shadow-2xl ml-10 mr-10">
                 <h3 class="font-bold  text-lg uppercase bg-gradient-to-r from-yellow-200 to-red-600 text-transparent bg-clip-text">Descripción:</h3><br>
-                <p class="font-semibold text-white text-lg">Somos un equipo de futbol...</p>
+                <p class="font-semibold text-white text-lg">{{equipoSeleccionado.descripcion}}</p>
             </div>
             
         </div>
