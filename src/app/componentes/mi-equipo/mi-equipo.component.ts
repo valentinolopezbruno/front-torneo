@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Jugador } from 'src/app/models/jugador';
 import { EquipoServiceService } from 'src/app/servicios/equipo-service/equipo-service.service';
+import { JugadorServiceService } from 'src/app/servicios/jugador-service/jugador-service.service';
 import { TorneoServiceService } from 'src/app/servicios/torneo-service/torneo-service.service';
 
 @Component({
@@ -11,12 +12,16 @@ import { TorneoServiceService } from 'src/app/servicios/torneo-service/torneo-se
 export class MiEquipoComponent {
 
   constructor(private equipoServiceService:EquipoServiceService,
-    private torneoServiceService:TorneoServiceService){}
+    private torneoServiceService:TorneoServiceService,
+    private jugadorServiceService:JugadorServiceService){}
   //Variable donde serán guardados los jugadores.
   equipos:any[] = [];
   equipoSeleccionado:any;
   idEquipo:any=1;
   torneos:any = [];
+  editarEquipo= false;
+  editarJugadores = false;
+  nuevosJugadores:any=[];
 
   // Traigo los Jugadores.
   getJugadoresPorEquipo(){
@@ -61,6 +66,40 @@ export class MiEquipoComponent {
         }
       }
     } 
+  }
+
+  modalAdministrarEquipo(){
+    this.editarEquipo = !this.editarEquipo
+  }
+
+  modalAdministrarJugadores(){
+    this.editarJugadores = !this.editarJugadores
+  }
+
+  agregarJugador(){
+    this.nuevosJugadores.push({nombre:"",dni:""})
+  }
+
+  // Creo los jugadores que se agregaron en el modal desde el front.
+  agregarJugadores(){
+    for(let i = 0; i < this.nuevosJugadores.length; i++){
+      this.nuevosJugadores[i].idEquipo = this.equipoSeleccionado.id
+      this.nuevosJugadores[i].roll = 0 // Roll: Jugador
+      this.nuevosJugadores[i].imagen = "asd" // Roll: Jugador
+
+      this.jugadorServiceService.crearJugador(this.nuevosJugadores[i]).subscribe((data) => {
+        console.log(data)
+      });
+    }
+  }
+
+  eliminarJugadores(jugador:Jugador){
+    console.log("eliminar jugador")
+    console.log(jugador)
+    this.jugadorServiceService.eliminarJugador(jugador).subscribe((data) => {
+      this.equipoSeleccionado.jugadores = this.equipoSeleccionado.jugadores.filter((jugador: Jugador) => jugador.id !== data.id);
+      console.log(data)
+    });
   }
 
   ngOnInit(){
