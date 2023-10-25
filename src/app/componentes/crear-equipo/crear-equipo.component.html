@@ -1,1 +1,29 @@
-<p>crear-equipo works!</p>
+<div class="w-full h-full " style="background: linear-gradient(to bottom, rgba(14, 42, 71, 1) 0%, rgba(14, 42, 71, 1) 25%, #4CAF50 100%);">
+
+    <app-navbar ></app-navbar>
+  
+<!--             <button class="right-0 mr-5 mt-16 border border-red-600 hover:bg-red-600 rounded-full text-white font-bold p-2 pl-4 pr-4 ">Abandonar Equipo</button>
+ -->        
+        <div class="mt-24 space-y-5 min-h-screen w-full"> 
+            <h1 class=" text-center font-bold bg-gradient-to-r from-yellow-200 to-red-600 text-transparent bg-clip-text text-4xl pb-5">Crea Tu Equipo</h1>  
+            <form (ngSubmit)="onSubmit()" [formGroup]="nuevoEquipoForm" class="text-center">
+
+                <div class="form-group flex">
+                  <label for="nombre">Nombre del Equipo</label>
+                  <input class="ml-8 border-r rounded-full" type="text" id="nombre" formControlName="nombre">
+                </div>
+              
+                <div class="form-group">
+                  <label for="localidad">Localidad</label>
+                  <input type="text" id="localidad" formControlName="localidad">
+                </div>
+              
+                <div class="form-group">
+                  <label for="descripcion">Descripcion</label>
+                  <input type="text" id="descripcion" formControlName="descripcion">
+                </div>
+              
+                <button type="submit" [disabled]="!nuevoEquipoForm.valid">Registrar</button>
+              </form>
+        </div>
+</div>

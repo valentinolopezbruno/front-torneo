@@ -22,6 +22,8 @@ export class MiEquipoComponent {
   editarEquipo= false;
   editarJugadores = false;
   nuevosJugadores:any=[];
+  buscarEquipos:any = false;
+  equipoBuscado:any = "";
 
   // Traigo los Jugadores.
   getJugadoresPorEquipo(){
@@ -89,6 +91,9 @@ export class MiEquipoComponent {
 
       this.jugadorServiceService.crearJugador(this.nuevosJugadores[i]).subscribe((data) => {
         console.log(data)
+        if(data){
+          this.equipoSeleccionado.jugadores.push(data)
+        }
       });
     }
   }
@@ -100,6 +105,31 @@ export class MiEquipoComponent {
       this.equipoSeleccionado.jugadores = this.equipoSeleccionado.jugadores.filter((jugador: Jugador) => jugador.id !== data.id);
       console.log(data)
     });
+  }
+
+  actualizarEquipo(){
+    this.equipoServiceService.editarEquipo(this.equipoSeleccionado).subscribe((data => {
+      console.log("equipo editado")
+      console.log(data)
+    }))
+  }
+
+  modalBuscarEquipos(){
+    this.buscarEquipos = !this.buscarEquipos
+  }
+
+
+  filtrarEquipo() {
+    // Esta funcion es para filtrar equipos por nombre en le modal.
+    if (this.equipoBuscado.trim() === '') {
+      // Si el campo de búsqueda está vacío, muestra todos los objetos
+      return this.equipos;
+    } else {
+      // Filtra los objetos que coinciden con el texto de búsqueda
+      var equipo = this.equipos.filter(equipo => equipo.nombre.toLowerCase().includes(this.equipoBuscado.toLowerCase()));
+      
+      return equipo;
+    }
   }
 
   ngOnInit(){
